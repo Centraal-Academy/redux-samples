@@ -1,10 +1,12 @@
 /* global Redux */
+const CALCULATOR_ADD = 'CALCULATOR_ADD'
+const CALCULATOR_SUBSTRACT = 'CALCULATOR_SUBSTRACT'
 
 function reducer (state = 0, action) {
   switch (action.type) {
-    case 'ADD':
+    case CALCULATOR_ADD:
       return state + action.value
-    case 'SUBSTRACT':
+    case CALCULATOR_SUBSTRACT:
       return state - action.value
     default:
       return state
@@ -19,9 +21,9 @@ store.subscribe(() => {
 
 document.getElementById('add').addEventListener('click', (e) => {
   e.preventDefault()
-  store.dispatch({ type: 'ADD', value: 1 })
+  store.dispatch({ type: CALCULATOR_ADD, value: 1 })
 })
 document.getElementById('substract').addEventListener('click', (e) => {
   e.preventDefault()
-  store.dispatch({ type: 'SUBSTRACT', value: 1 })
+  store.dispatch({ type: CALCULATOR_SUBSTRACT, value: 1 })
 })
