@@ -2,6 +2,20 @@
 const CALCULATOR_ADD = 'CALCULATOR_ADD'
 const CALCULATOR_SUBSTRACT = 'CALCULATOR_SUBSTRACT'
 
+function add (value) {
+  return {
+    type: CALCULATOR_ADD,
+    value
+  }
+}
+
+function substract (value) {
+  return {
+    type: CALCULATOR_SUBSTRACT,
+    value
+  }
+}
+
 function reducer (state = 0, action) {
   switch (action.type) {
     case CALCULATOR_ADD:
@@ -21,9 +35,9 @@ store.subscribe(() => {
 
 document.getElementById('add').addEventListener('click', (e) => {
   e.preventDefault()
-  store.dispatch({ type: CALCULATOR_ADD, value: 1 })
+  store.dispatch(add(1))
 })
 document.getElementById('substract').addEventListener('click', (e) => {
   e.preventDefault()
-  store.dispatch({ type: CALCULATOR_SUBSTRACT, value: 1 })
+  store.dispatch(substract(1))
 })
