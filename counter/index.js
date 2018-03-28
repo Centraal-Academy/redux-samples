@@ -16,7 +16,7 @@ function substract (value) {
   }
 }
 
-function reducer (state = 0, action) {
+function counterReducer (state = 0, action) {
   switch (action.type) {
     case CALCULATOR_ADD:
       return state + action.value
@@ -27,10 +27,14 @@ function reducer (state = 0, action) {
   }
 }
 
+const reducer = Redux.combineReducers({
+  counter: counterReducer
+})
+
 const store = Redux.createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 store.subscribe(() => {
-  document.getElementById('result').innerText = store.getState()
+  document.getElementById('result').innerText = store.getState().counter
 })
 
 document.getElementById('add').addEventListener('click', (e) => {
