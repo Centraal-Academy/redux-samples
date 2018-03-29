@@ -4,14 +4,16 @@ const ADD_TODO = 'ADD_TODO'
 function addTodo (text) {
   return {
     type: ADD_TODO,
-    text
+    payload: {
+      text
+    }
   }
 }
 
 function todosReducer (state = [], action) {
   switch (action.type) {
     case ADD_TODO:
-      return [...state, action.text]
+      return [...state, action.payload.text]
     default:
       return state
   }
